@@ -1,6 +1,4 @@
-[
-  {
-    "src/**/*.{js,ts,tsx,vue}": "npm run lint:eslint",
-    "src/**/*.{vue,css,scss}": "npm run lint:stylelint",
-  },
-];
+{
+  "src/**/*.{js,ts,tsx,vue}": "npm run lint:eslint",
+  "src/**/*.{vue,css,scss}": "npm run lint:stylelint"
+}
