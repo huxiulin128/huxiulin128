@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged --allow-empty"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -14,11 +16,16 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "cz-customizable": "^6.7.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3"
   },
   "eslintConfig": {
     "root": true,
@@ -33,6 +40,23 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {}
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "prettier --write",
+      "eslint --cache --fix",
+      "git add ."
+    ]
   },
   "browserslist": [
     "> 1%",
